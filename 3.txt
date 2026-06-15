@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+enum PerfectNumber { Perfect = 1, NotPerfect = 2 };
+
+int ReadPositiveNumber(string Message)
+{
+    int Number = 0;
+    do
+    {
+        cout << Message << endl;
+        cin >> Number;
+    } while (Number <= 0);
+
+    return Number;
+}
+PerfectNumber CheckPerfectNumber(int Number)
+{
+    int Sum = 0;
+    for (int i = 1; i < Number; i++)
+    {
+        if (Number % i == 0)
+            Sum += i;
+	}
+    if (Sum == Number)
+        return Perfect;
+    else
+		return NotPerfect;
+ 
+}
+void PrintPerfectNumberResult(PerfectNumber Result)
+{
+    if (Result == Perfect)
+        cout << "The number is perfect." << endl;
+    else
+        cout << "The number is not perfect." << endl;
+}
+int main()
+{
+    int Number = ReadPositiveNumber("Please enter a positive number: ");
+    PerfectNumber Result = CheckPerfectNumber(Number);
+    PrintPerfectNumberResult(Result);
+    return 0;
+}

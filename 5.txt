@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+int ReadPositiveNumber(string massage)
+{
+	cout << massage;
+	int num;
+	do {
+		cin >> num;
+	} while (num < 0);
+		return num;
+	
+}
+void printDigitsReversed(int num)
+{
+	int remainder=0;
+	while (num > 0)
+	{
+		remainder = num % 10;
+		num = num / 10;
+		cout << remainder;
+	}
+
+
+}
+int main()
+{
+	printDigitsReversed(ReadPositiveNumber("Please Enter Positive Number\n"));
+	return 0;
+}
