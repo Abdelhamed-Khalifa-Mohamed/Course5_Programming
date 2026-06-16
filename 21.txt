@@ -1,0 +1,73 @@
+#include <iostream>          
+#include <string>                  
+#include <cstdlib>           
+#include <ctime>                   
+using namespace std;   
+int ReadPositiveNumber(string Message)
+{
+    int Number = 0;        
+    do
+    {
+        cout << Message << endl;     
+        cin >> Number;                 
+    } while (Number <= 0);               
+    return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;       
+}
+
+
+string GenerateRandoWord(int Lenth_of_Word)
+{
+    string word = "";
+
+    for (int i = 1; i <= Lenth_of_Word;i++)
+    {
+        word = word + char(RandomNumber(65, 90));
+
+    }
+    return word;
+
+
+
+}
+string GenerateRandomKey(int Lenth_of_Key,int Lenth_of_Word)
+{
+    string Key = "";
+    for (int i = 0; i < Lenth_of_Key; i++)
+    {
+        Key = Key + GenerateRandoWord(Lenth_of_Word);
+        if (i < Lenth_of_Key - 1)
+        {
+            Key = Key + "-";
+        }
+       
+
+    }
+       
+    return Key;
+
+}
+void GenerateRandomKeys(int Number_of_Keys, int Lenth_of_Key, int Lenth_of_Word)
+{
+    for (int i = 1; i <= Number_of_Keys; i++)
+    {
+        cout << "Key Number [" << i << "] : " << GenerateRandomKey(Lenth_of_Key, Lenth_of_Word);
+        cout << endl;
+    }
+}
+
+int main()
+{
+    srand((unsigned)time(NULL));
+
+    GenerateRandomKeys(ReadPositiveNumber("Enter Number of Keys :"),
+        ReadPositiveNumber("Enter Lenth of Key :"),
+        ReadPositiveNumber("Enter Lenth of Word :"));
+
+    return 0;         
+}
