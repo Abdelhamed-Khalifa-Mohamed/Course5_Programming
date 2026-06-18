@@ -5,7 +5,7 @@ using namespace std;
 enum enPrimNotPrime { Prime = 1, NotPrime = 2 };
 
 int ReadPositiveNumber(string Message)
-{
+{ 
     int Number = 0;           
     do
     {
