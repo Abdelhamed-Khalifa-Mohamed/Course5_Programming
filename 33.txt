@@ -1,0 +1,132 @@
+#include <iostream>
+#include<cstdlib>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+    int Number = 0;
+    do
+    {
+        cout << Message << endl;
+        cin >> Number;
+    } while (Number <= 0);
+
+    return Number;
+}
+int RandomNumber(int From, int To)
+{
+    int RandNum = rand() % (To - From + 1) + From;
+    return RandNum;
+}
+
+void ReadArray(int arr[100], int& arrLength)
+{
+    cout << "\nEnter number of elements:\n";
+    cin >> arrLength;
+
+    cout << "\nEnter array elements: \n";
+    for (int i = 0; i < arrLength; i++)
+    {
+        cout << "Element [" << i + 1 << "] : ";
+        cin >> arr[i];
+    }
+    cout << endl;
+}
+void FillArrayWithRandomNumbers(int arr[100], int &arrLength)
+{
+    cout << "Please Enter The Lenght of The Array: \n";
+    cin >> arrLength;
+
+    for (int i = 0; i < arrLength; i++)
+    {
+        arr[i] = RandomNumber(1, 100);
+    }
+}
+
+string GenerateRandoWord(int Lenth_of_Word)
+{
+    string word = "";
+
+    for (int i = 1; i <= Lenth_of_Word; i++)
+    {
+        word = word + char(RandomNumber(65, 90));
+
+    }
+    return word;
+
+
+
+}
+string GenerateRandomKey(int Lenth_of_Key, int Lenth_of_Word)
+{
+    string Key = "";
+    for (int i = 0; i < Lenth_of_Key; i++)
+    {
+        Key = Key + GenerateRandoWord(Lenth_of_Word);
+        if (i < Lenth_of_Key - 1)
+        {
+            Key = Key + "-";
+        }
+
+
+    }
+
+    return Key;
+
+}
+void GenerateRandomKeys(int Number_of_Keys, int Lenth_of_Key, int Lenth_of_Word)
+{
+    for (int i = 1; i <= Number_of_Keys; i++)
+    {
+        cout << "Key Number [" << i << "] : " << GenerateRandomKey(Lenth_of_Key, Lenth_of_Word);
+        cout << endl;
+    }
+}
+void FillArrayWithRandomKeys(string arr[100], int &arrLength)
+{
+    cout << "Please Enter The Length of the Array: \n";
+    cin >> arrLength;
+
+    int Lenth_of_Key, Lenth_of_Word;
+        cout << "Please Enter The length of The key: \n";
+    cin >> Lenth_of_Key;
+    cout<< "Please Enter The length of The Word: \n";
+    cin >> Lenth_of_Word;
+    for (int i = 0; i < arrLength; i++)
+    {
+        arr[i] = GenerateRandomKey(Lenth_of_Key, Lenth_of_Word);
+    }
+
+}
+
+
+
+
+void PrintArrayOfStrings(string arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        cout <<"Array {"<<i+1 <<"} : " << arr[i] << endl;
+
+    cout << "\n";
+}
+
+
+int main()
+{
+    srand((unsigned)time(NULL));
+
+
+    string arr[100];
+    int arrLength;               
+
+
+    FillArrayWithRandomKeys(arr, arrLength);
+    cout << "The Array Is : \n";
+    PrintArrayOfStrings(arr, arrLength);
+;
+
+
+
+
+    return 0;
+}
