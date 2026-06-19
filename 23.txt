@@ -32,7 +32,7 @@ void ReadArray(int arr[100], int &arrLength)
     }
     cout << endl;
 }
-void FillArrayWithRandomNumbers(int arr[100],int arrLength)
+void FillArrayWithRandomNumbers(int arr[100],int &arrLength)
 {
     cout<<"Please Enter The Length of The Array: \n";
     cin>>arrLength;
