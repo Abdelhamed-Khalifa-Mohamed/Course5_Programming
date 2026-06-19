@@ -34,6 +34,8 @@ void ReadArray(int arr[100], int &arrLength)
 }
 void FillArrayWithRandomNumbers(int arr[100],int arrLength)
 {
+    cout<<"Please Enter The Length of The Array: \n";
+    cin>>arrLength;
     
     for(int i=0;i<arrLength;i++)
     {
@@ -55,7 +57,7 @@ int main()
     srand((unsigned)time(NULL));
     
     int arr[100];
-    int arrLength=ReadPositiveNumber("Please Enter The Length Of The Array");
+    int arrLength;
     
     FillArrayWithRandomNumbers(arr,arrLength);
   
